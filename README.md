@@ -1,58 +1,138 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+  <img src="public/images/logo.png" width="300" alt="HorrorWiki Logo">
 </p>
 
-## About Laravel
+<p align="center">
+  <strong>A enciclopédia sombria para histórias sobrenaturais, fanfics de terror e relatos macabros.</strong>
+</p>
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+<hr>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+<h2>🌙 Sobre o Projeto</h2>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+<p>
+  O <strong>HorrorWiki</strong> é uma plataforma web desenvolvida para reunir em um só lugar:
+</p>
 
-## Learning Laravel
+<ul>
+  <li>📖 histórias de terror</li>
+  <li>👻 relatos sobrenaturais</li>
+  <li>🩸 fanfics macabras</li>
+  <li>🕯️ lendas urbanas</li>
+  <li>💬 fórum de teorias e discussões</li>
+  <li>📚 wiki de criaturas, locais e universos de horror</li>
+</ul>
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+<p>
+  O objetivo é criar uma experiência inspirada em grandes portais de comunidade e conteúdo, como a Fandom,
+  porém totalmente voltada ao universo do <strong>terror, suspense e horror psicológico</strong>.
+</p>
 
-In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<hr>
 
-You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
+<h2>🛠️ Tecnologias Utilizadas</h2>
 
-## Agentic Development
+<ul>
+  <li>Laravel</li>
+  <li>PHP 8.5</li>
+  <li>Tailwind CSS</li>
+  <li>MySQL</li>
+  <li>Docker</li>
+</ul>
 
-Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
+<hr>
 
-```bash
-composer require laravel/boost --dev
+<h2>🎨 Front-end</h2>
 
-php artisan boost:install
-```
+<p>A interface foi desenvolvida com foco em:</p>
 
-Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
+<ul>
+  <li>visual sombrio</li>
+  <li>atmosfera macabra</li>
+  <li>identidade premium</li>
+  <li>design inspirado em portais wiki</li>
+  <li>experiência imersiva</li>
+</ul>
 
-## Contributing
+<hr>
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+<h2>🚀 Funcionalidades Planejadas</h2>
 
-## Code of Conduct
+<ul>
+  <li>✅ Landing page inicial</li>
+  <li>⬜ Sistema de autenticação</li>
+  <li>⬜ Cadastro e login de usuários</li>
+  <li>⬜ Publicação de fanfics</li>
+  <li>⬜ Sistema de capítulos</li>
+  <li>⬜ Fórum de discussões</li>
+  <li>⬜ Wiki de criaturas</li>
+  <li>⬜ Comentários e avaliações</li>
+  <li>⬜ Perfis de autores</li>
+  <li>⬜ Sistema de favoritos</li>
+  <li>⬜ Painel administrativo</li>
+</ul>
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+<hr>
 
-## Security Vulnerabilities
+<h2>📌 Versionamento</h2>
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+<h3>Versão 1.0.0</h3>
+<blockquote>
+  <strong>Commit 001:</strong> Desenvolvimento da Landing Page Inicial
+</blockquote>
 
-## License
+<p>Primeira versão visual do projeto, contendo:</p>
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+<ul>
+  <li>identidade visual HorrorWiki</li>
+  <li>landing page inicial</li>
+  <li>sistema de busca visual</li>
+  <li>cards principais</li>
+  <li>seções de destaque</li>
+  <li>layout inspirado em wiki / fandom</li>
+</ul>
+
+<hr>
+
+<h2>🩸 Objetivo do Projeto</h2>
+
+<p>
+  O HorrorWiki nasce como um projeto para a comunidade apaixonada por:
+</p>
+
+<ul>
+  <li>creepypastas</li>
+  <li>horror stories</li>
+  <li>terror psicológico</li>
+  <li>fanfics</li>
+  <li>lendas urbanas</li>
+  <li>universos sobrenaturais</li>
+</ul>
+
+<hr>
+
+<h2>📅 Status</h2>
+
+<p>
+  🚧 Projeto em desenvolvimento<br>
+  🧪 Em fase de testes e melhorias
+</p>
+
+<hr>
+
+<h2>👨‍💻 Desenvolvedor</h2>
+
+<p>
+  Projeto idealizado e desenvolvido por <strong>Kaio Andrião Dalfior</strong>.
+</p>
+
+<hr>
+
+<h2>📜 Licença</h2>
+
+<p>
+  Este projeto está sob licença .
+    <p>
+        Kaio Andrião Dalfior - CEO J&K Sistemas - TODOS OS DIREITOS RESERVADOS &copy - 2026
+    </p>
+</p>

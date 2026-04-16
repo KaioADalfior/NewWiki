@@ -85,16 +85,10 @@
   <strong>Commit 002:</strong> Páginas de Cadastro e Login feitas. Lógica de cadastro realizada.
 </blockquote>
 
-<p>Primeira versão visual do projeto, contendo:</p>
+<blockquote>
+  <strong>Commit 003:</strong> Confecção da lógica de login, criação e edição de perfis. Insert de nova tabela para manipular biografias, usuários com perfil completo e desativados.
 
-<ul>
-  <li>identidade visual HorrorWiki</li>
-  <li>landing page inicial</li>
-  <li>sistema de busca visual</li>
-  <li>cards principais</li>
-  <li>seções de destaque</li>
-  <li>layout inspirado em wiki / fandom</li>
-</ul>
+</blockquote>
 
 <hr>
 

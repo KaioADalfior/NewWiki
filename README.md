@@ -81,6 +81,10 @@
   <strong>Commit 001:</strong> Desenvolvimento da Landing Page Inicial
 </blockquote>
 
+<blockquote>
+  <strong>Commit 002:</strong> Páginas de Cadastro e Login feitas. Lógica de cadastro realizada.
+</blockquote>
+
 <p>Primeira versão visual do projeto, contendo:</p>
 
 <ul>

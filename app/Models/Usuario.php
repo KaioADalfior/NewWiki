@@ -24,4 +24,9 @@ class Usuario extends Model
         'receber_novidades' => 'boolean',
         'aceitou_termos' => 'boolean',
     ];
+
+    public function perfil()
+    {
+        return $this->hasOne(UsuarioPerfil::class, 'usuario_id');
+    }
 }

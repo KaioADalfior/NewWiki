@@ -119,7 +119,21 @@
                             Entre com seu usuário e senha.
                         </p>
 
-                        <form action="#" method="POST" class="mt-8 space-y-5">
+                        @if ($errors->any())
+                            <div class="mt-6 rounded-md border border-red-900/60 bg-red-950/40 px-4 py-3 text-sm text-red-300">
+                                @foreach ($errors->all() as $error)
+                                    <div>{{ $error }}</div>
+                                @endforeach
+                            </div>
+                        @endif
+
+                        @if (session('sucesso'))
+                            <div class="mt-6 rounded-md border border-emerald-900/60 bg-emerald-950/40 px-4 py-3 text-sm text-emerald-300">
+                                {{ session('sucesso') }}
+                            </div>
+                        @endif
+
+                        <form action="{{ route('login.autenticar') }}" method="POST" class="mt-8 space-y-5">
                             @csrf
 
                             <div class="space-y-2">
@@ -129,7 +143,8 @@
 
                                 <input
                                     type="text"
-                                    name="username"
+                                    name="nome_usuario"
+                                    value="{{ old('nome_usuario') }}"
                                     placeholder="Digite seu usuário"
                                     class="h-14 w-full rounded-md border border-zinc-700 bg-zinc-950/90 px-4 text-sm text-zinc-100 outline-none transition focus:border-red-700"
                                 >
@@ -142,7 +157,7 @@
 
                                 <input
                                     type="password"
-                                    name="password"
+                                    name="senha"
                                     placeholder="Digite sua senha"
                                     class="h-14 w-full rounded-md border border-zinc-700 bg-zinc-950/90 px-4 text-sm text-zinc-100 outline-none transition focus:border-red-700"
                                 >
@@ -150,7 +165,7 @@
 
                             <div class="flex items-center justify-between rounded-md border border-zinc-800 bg-zinc-950/50 px-4 py-3">
                                 <label class="flex items-center gap-3 text-sm text-zinc-400">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="lembrar">
                                     Manter conectado
                                 </label>
                                 <span class="text-xs font-bold uppercase tracking-[0.16em] text-zinc-600">

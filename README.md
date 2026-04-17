@@ -62,8 +62,8 @@
   <li>✅ Landing page inicial</li>
   <li>✅ Sistema de autenticação</li>
   <li>✅ Cadastro e login de usuários</li>
-  <li>⬜ Publicação de fanfics</li>
-  <li>⬜ Sistema de capítulos</li>
+  <li>✅ Publicação de fanfics</li>
+  <li>✅ Sistema de capítulos</li>
   <li>⬜ Fórum de discussões</li>
   <li>⬜ Wiki de criaturas</li>
   <li>⬜ Comentários e avaliações</li>
@@ -97,7 +97,9 @@
   <strong>Commit 005:</strong> Publicação de histórias e fanfics. Corrigir texto vazando em fanfics.
 </blockquote>
 
-
+<blockquote>
+  <strong>Commit 006:</strong> Correção da falta de quebra de texto das fanfics.
+</blockquote>
 
 <hr>
 

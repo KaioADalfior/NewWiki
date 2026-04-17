@@ -6,6 +6,7 @@ use App\Models\Usuario;
 use App\Models\UsuarioPerfil;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class PerfilController extends Controller
@@ -32,39 +33,41 @@ class PerfilController extends Controller
 
     public function salvar(Request $request): RedirectResponse
     {
+        $request->validate([
+            'bio' => 'nullable|string|max:1000',
+            'foto_perfil' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        ]);
+
         $usuarioId = session('usuario_id');
 
         if (!$usuarioId) {
             return redirect()->route('login');
         }
 
-        $dados = $request->validate([
-            'bio' => ['required', 'string', 'min:10', 'max:3000'],
-        ], [
-            'bio.required' => 'A apresentação do perfil é obrigatória.',
-            'bio.min' => 'A apresentação do perfil deve ter no mínimo 10 caracteres.',
-            'bio.max' => 'A apresentação do perfil deve ter no máximo 3000 caracteres.',
-        ]);
-
         $perfil = UsuarioPerfil::firstOrCreate(
             ['usuario_id' => $usuarioId],
             [
-                'perfil_ativo' => true,
+                'bio' => null,
                 'perfil_completo' => false,
+                'perfil_ativo' => true,
             ]
         );
 
-        $bioLimpa = trim($dados['bio']);
+        $perfil->bio = $request->bio;
 
-        $perfil->bio = $bioLimpa;
-        $perfil->perfil_completo = $bioLimpa !== '';
-        $perfil->perfil_ativo = true;
-        $perfil->desativado_em = null;
+        if ($request->hasFile('foto_perfil')) {
+            if (!empty($perfil->foto_perfil) && Storage::disk('public')->exists($perfil->foto_perfil)) {
+                Storage::disk('public')->delete($perfil->foto_perfil);
+            }
+
+            $caminhoFoto = $request->file('foto_perfil')->store('perfis', 'public');
+            $perfil->foto_perfil = $caminhoFoto;
+        }
+
+        $perfil->perfil_completo = !empty($perfil->bio) || !empty($perfil->foto_perfil);
         $perfil->save();
 
-        return redirect()
-            ->route('perfil')
-            ->with('sucesso', 'Perfil atualizado com sucesso.');
+        return redirect()->back()->with('sucesso', 'Perfil atualizado com sucesso!');
     }
 
     public function desativar(Request $request): RedirectResponse

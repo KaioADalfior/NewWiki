@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Perfil | HorrorWiki</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body class="min-h-screen bg-zinc-950 text-zinc-100 antialiased selection:bg-red-700/40 selection:text-white">
 
     @php
         $bio = $perfil?->bio ?? '';
         $perfilCompleto = $perfil?->perfil_completo ?? false;
         $perfilAtivo = $perfil?->perfil_ativo ?? true;
+        $fotoPerfilUrl = $perfil?->foto_perfil ? asset('storage/' . $perfil->foto_perfil) : null;
     @endphp
 
     <div class="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(127,29,29,0.18),_transparent_25%),linear-gradient(180deg,_#140406_0%,_#0b0b0d_45%,_#09090b_100%)]">
@@ -20,13 +23,12 @@
             <div class="mx-auto flex max-w-[1500px] items-center justify-between gap-4 px-4 py-3 md:px-6">
                 <div class="flex items-center gap-3">
                     <a href="{{ route('home.logado') }}"
-                       class="inline-flex items-center gap-2 rounded-md border border-zinc-800 bg-zinc-900 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-zinc-300 transition hover:border-red-700 hover:text-white">
+                        class="inline-flex items-center gap-2 rounded-md border border-zinc-800 bg-zinc-900 px-4 py-2 text-xs font-bold uppercase tracking-[0.16em] text-zinc-300 transition hover:border-red-700 hover:text-white">
                         ← Voltar
                     </a>
 
-                    <img src="{{ asset('images/logo.png') }}"
-                         alt="HorrorWiki"
-                         class="h-10 w-auto object-contain md:h-12">
+                    <img src="{{ asset('images/logo.png') }}" alt="HorrorWiki"
+                        class="h-10 w-auto object-contain md:h-12">
                 </div>
 
                 <form action="{{ route('logout') }}" method="POST">
@@ -98,9 +100,17 @@
 
                         <div class="flex flex-col gap-5 lg:flex-row lg:items-start">
                             <div class="-mt-12 md:-mt-16">
-                                <div class="flex h-28 w-28 items-center justify-center rounded-full border-4 border-zinc-950 bg-zinc-900 text-4xl font-black text-white shadow-[0_20px_50px_rgba(0,0,0,0.45)] md:h-36 md:w-36 md:text-5xl">
-                                    {{ strtoupper(substr($usuario->nome_usuario, 0, 1)) }}
-                                </div>
+                                @if($fotoPerfilUrl)
+                                    <div class="h-28 w-28 overflow-hidden rounded-full border-4 border-zinc-950 bg-white shadow-[0_20px_50px_rgba(0,0,0,0.45)] md:h-36 md:w-36">
+                                        <img src="{{ $fotoPerfilUrl }}"
+                                            alt="Foto de perfil"
+                                            class="block h-full w-full object-cover object-center">
+                                    </div>
+                                @else
+                                    <div class="flex h-28 w-28 items-center justify-center rounded-full border-4 border-zinc-950 bg-zinc-900 text-4xl font-black text-white shadow-[0_20px_50px_rgba(0,0,0,0.45)] md:h-36 md:w-36 md:text-5xl">
+                                        {{ strtoupper(substr($usuario->nome_usuario, 0, 1)) }}
+                                    </div>
+                                @endif
                             </div>
 
                             <div class="pt-2">
@@ -139,14 +149,13 @@
                         </div>
 
                         <div class="flex flex-wrap gap-3 lg:pt-6">
-                            <button id="openEditModal"
-                                type="button"
+                            <button id="openEditModal" type="button"
                                 class="inline-flex items-center justify-center rounded-md border border-zinc-700 bg-zinc-900 px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-zinc-200 transition hover:border-red-700 hover:text-white">
                                 Editar perfil
                             </button>
 
                             <a href="#"
-                               class="inline-flex items-center justify-center rounded-md bg-red-700 px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-600">
+                                class="inline-flex items-center justify-center rounded-md bg-red-700 px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-600">
                                 Nova história
                             </a>
                         </div>
@@ -189,7 +198,8 @@
                                 </p>
 
                                 <p class="leading-7 text-zinc-400">
-                                    Aqui será possível exibir sua descrição pessoal, seus gostos por terror psicológico, gore, sobrenatural, creepypastas, lendas urbanas, criaturas e fanfics autorais.
+                                    Aqui será possível exibir sua descrição pessoal, seus gostos por terror psicológico,
+                                    gore, sobrenatural, creepypastas, lendas urbanas, criaturas e fanfics autorais.
                                 </p>
                             @endif
                         </div>
@@ -260,8 +270,7 @@
                         </h3>
 
                         <div class="mt-5 space-y-3">
-                            <button id="openEditModalAside"
-                                type="button"
+                            <button id="openEditModalAside" type="button"
                                 class="block w-full text-left text-sm font-semibold text-zinc-300 transition hover:text-red-400">
                                 Editar informações do perfil
                             </button>
@@ -335,14 +344,13 @@
                     Editar perfil
                 </h2>
 
-                <button id="closeEditModal"
-                        type="button"
-                        class="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-700 bg-zinc-950 text-zinc-300 transition hover:border-red-700 hover:text-white">
+                <button id="closeEditModal" type="button"
+                    class="flex h-10 w-10 items-center justify-center rounded-md border border-zinc-700 bg-zinc-950 text-zinc-300 transition hover:border-red-700 hover:text-white">
                     ✕
                 </button>
             </div>
 
-            <form action="{{ route('perfil.salvar') }}" method="POST" class="space-y-4">
+            <form action="{{ route('perfil.salvar') }}" method="POST" enctype="multipart/form-data" class="space-y-4">
                 @csrf
 
                 <div>
@@ -350,10 +358,8 @@
                         Nome do usuário
                     </label>
 
-                    <input type="text"
-                           value="{{ $usuario->nome_usuario }}"
-                           disabled
-                           class="w-full rounded-md border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-300">
+                    <input type="text" value="{{ $usuario->nome_usuario }}" disabled
+                        class="w-full rounded-md border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-300">
                 </div>
 
                 <div>
@@ -361,10 +367,25 @@
                         Email
                     </label>
 
-                    <input type="text"
-                           value="{{ $usuario->email }}"
-                           disabled
-                           class="w-full rounded-md border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-300">
+                    <input type="text" value="{{ $usuario->email }}" disabled
+                        class="w-full rounded-md border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-300">
+                </div>
+
+                <div>
+                    <label class="mb-2 block text-xs font-extrabold uppercase tracking-[0.16em] text-zinc-500">
+                        Foto de perfil
+                    </label>
+
+                    <input type="file" name="foto_perfil" accept="image/*"
+                        class="w-full rounded-md border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-300 file:bg-red-700 file:border-0 file:px-4 file:py-2 file:text-white file:cursor-pointer">
+
+                    @if($fotoPerfilUrl)
+                        <div class="mt-3 h-20 w-20 overflow-hidden rounded-full border border-zinc-700 bg-white">
+                            <img src="{{ $fotoPerfilUrl }}"
+                                alt="Foto atual"
+                                class="block h-full w-full object-cover object-center">
+                        </div>
+                    @endif
                 </div>
 
                 <div>
@@ -372,21 +393,19 @@
                         Apresentação do perfil
                     </label>
 
-                    <textarea name="bio"
-                              rows="6"
-                              class="w-full rounded-md border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-100 focus:border-red-700 focus:outline-none"
-                              placeholder="Conte sobre você, seus gostos por histórias de terror, fanfics, relatos e criaturas...">{{ old('bio', $bio) }}</textarea>
+                    <textarea name="bio" rows="6"
+                        class="w-full rounded-md border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-100 focus:border-red-700 focus:outline-none"
+                        placeholder="Conte sobre você, seus gostos por histórias de terror, fanfics, relatos e criaturas...">{{ old('bio', $bio) }}</textarea>
                 </div>
 
                 <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-between">
-                    <button type="button"
-                            id="openDeactivateConfirm"
-                            class="w-full rounded-md border border-red-800 bg-zinc-950 px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-red-400 transition hover:bg-red-950/20 sm:w-auto">
+                    <button type="button" id="openDeactivateConfirm"
+                        class="w-full rounded-md border border-red-800 bg-zinc-950 px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-red-400 transition hover:bg-red-950/20 sm:w-auto">
                         Desativar perfil
                     </button>
 
                     <button type="submit"
-                            class="w-full rounded-md bg-red-700 px-6 py-3 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-600 sm:w-auto">
+                        class="w-full rounded-md bg-red-700 px-6 py-3 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-600 sm:w-auto">
                         Salvar
                     </button>
                 </div>
@@ -405,16 +424,15 @@
             </p>
 
             <div class="mt-6 flex flex-col gap-3 sm:flex-row sm:justify-end">
-                <button id="closeDeactivateModal"
-                        type="button"
-                        class="rounded-md border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm font-black uppercase tracking-[0.16em] text-zinc-200 transition hover:border-red-700 hover:text-white">
+                <button id="closeDeactivateModal" type="button"
+                    class="rounded-md border border-zinc-700 bg-zinc-950 px-4 py-3 text-sm font-black uppercase tracking-[0.16em] text-zinc-200 transition hover:border-red-700 hover:text-white">
                     Cancelar
                 </button>
 
                 <form action="{{ route('perfil.desativar') }}" method="POST">
                     @csrf
                     <button type="submit"
-                            class="rounded-md bg-red-700 px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-600">
+                        class="rounded-md bg-red-700 px-5 py-3 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-600">
                         Confirmar
                     </button>
                 </form>
@@ -468,4 +486,5 @@
         @endif
     </script>
 </body>
+
 </html>

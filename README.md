@@ -109,6 +109,12 @@
   <strong>Commit 008:</strong> Inserção de fotos aterrorizantes em cada categoria.
 </blockquote>
 
+<blockquote>
+  <strong>Commit 009:</strong> Correção de rotas e da página home após login.
+</blockquote>
+
+
+
 
 
 <hr>

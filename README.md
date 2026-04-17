@@ -90,8 +90,14 @@
 </blockquote>
 
 <blockquote>
-  <strong>Commit 003:</strong> Implementação completa da página de perfil com foto.
+  <strong>Commit 004:</strong> Implementação completa da página de perfil com foto.
 </blockquote>
+
+<blockquote>
+  <strong>Commit 005:</strong> Publicação de histórias e fanfics. Corrigir texto vazando em fanfics.
+</blockquote>
+
+
 
 <hr>
 

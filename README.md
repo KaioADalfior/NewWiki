@@ -60,8 +60,8 @@
 
 <ul>
   <li>✅ Landing page inicial</li>
-  <li>⬜ Sistema de autenticação</li>
-  <li>⬜ Cadastro e login de usuários</li>
+  <li>✅ Sistema de autenticação</li>
+  <li>✅ Cadastro e login de usuários</li>
   <li>⬜ Publicação de fanfics</li>
   <li>⬜ Sistema de capítulos</li>
   <li>⬜ Fórum de discussões</li>
@@ -90,8 +90,14 @@
 </blockquote>
 
 <blockquote>
-  <strong>Commit 003:</strong> Implementação completa da página de perfil com foto.
+  <strong>Commit 004:</strong> Implementação completa da página de perfil com foto.
 </blockquote>
+
+<blockquote>
+  <strong>Commit 005:</strong> Publicação de histórias e fanfics. Corrigir texto vazando em fanfics.
+</blockquote>
+
+
 
 <hr>
 

@@ -6,12 +6,21 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\FanficController;
 use App\Http\Controllers\HistoriaController;
-use App\Models\CategoriaHistoria;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CategoriaController;
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('landing');
+/*
+|--------------------------------------------------------------------------
+| Página inicial pública
+|--------------------------------------------------------------------------
+*/
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
+/*
+|--------------------------------------------------------------------------
+| Autenticação
+|--------------------------------------------------------------------------
+*/
 Route::get('/login', function () {
     return view('auth.login');
 })->name('login');
@@ -29,6 +38,11 @@ Route::get('/cadastro', function () {
 
 Route::post('/register', [CadastroController::class, 'cadastrar'])->name('register.salvar');
 
+/*
+|--------------------------------------------------------------------------
+| Home logada
+|--------------------------------------------------------------------------
+*/
 Route::get('/home', function () {
     if (!session()->has('usuario_id')) {
         return redirect()->route('login');
@@ -37,21 +51,29 @@ Route::get('/home', function () {
     return view('home-logado');
 })->name('home.logado');
 
-Route::get('/nova-historia/categorias', function () {
-    $categorias = CategoriaHistoria::where('ativa', true)->orderBy('nome')->get();
-    return response()->json($categorias);
-})->name('historias.categorias');
-
-Route::get('/historias/criar/{slug}', [HistoriaController::class, 'criar'])->name('historias.criar');
-Route::post('/historias/salvar', [HistoriaController::class, 'salvar'])->name('historias.salvar');
+/*
+|--------------------------------------------------------------------------
+| Perfil
+|--------------------------------------------------------------------------
+*/
 Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil');
 Route::post('/perfil/salvar', [PerfilController::class, 'salvar'])->name('perfil.salvar');
 Route::post('/perfil/desativar', [PerfilController::class, 'desativar'])->name('perfil.desativar');
 
+/*
+|--------------------------------------------------------------------------
+| Histórias
+|--------------------------------------------------------------------------
+*/
 Route::get('/nova-historia/categorias', [HistoriaController::class, 'categorias'])->name('historias.categorias');
 Route::get('/historias/criar/{slug}', [HistoriaController::class, 'criar'])->name('historias.criar');
 Route::post('/historias/salvar', [HistoriaController::class, 'salvar'])->name('historias.salvar');
 
+/*
+|--------------------------------------------------------------------------
+| Fanfics
+|--------------------------------------------------------------------------
+*/
 Route::get('/fanfics/criar/{slug}', [FanficController::class, 'criar'])->name('fanfics.criar');
 Route::post('/fanfics/salvar', [FanficController::class, 'salvar'])->name('fanfics.salvar');
 
@@ -65,3 +87,10 @@ Route::post('/fanfics/{fanficId}/capitulos/{capituloId}/publicar', [FanficContro
 
 Route::get('/fanfic/{slug}', [FanficController::class, 'visualizar'])->name('fanfics.visualizar');
 Route::get('/fanfic/{slug}/capitulo/{numero}', [FanficController::class, 'visualizarCapitulo'])->name('fanfics.capitulos.visualizar');
+
+/*
+|--------------------------------------------------------------------------
+| Categorias
+|--------------------------------------------------------------------------
+*/
+Route::get('/categorias/{slug}', [CategoriaController::class, 'show'])->name('categorias.show');

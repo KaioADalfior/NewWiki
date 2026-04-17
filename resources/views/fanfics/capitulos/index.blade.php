@@ -6,7 +6,7 @@
     <title>Capítulos da Fanfic</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-zinc-950 text-zinc-100">
+<body class="min-h-screen overflow-x-hidden bg-zinc-950 text-zinc-100">
     <div class="mx-auto max-w-6xl px-4 py-8">
         <a href="{{ route('perfil') }}" class="mb-6 inline-block border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm font-bold uppercase tracking-[0.16em] text-zinc-300">
             ← Voltar ao perfil
@@ -27,7 +27,7 @@
         @endif
 
         <div class="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
-            <aside class="border border-zinc-800 bg-zinc-900 p-5">
+            <aside class="min-w-0 border border-zinc-800 bg-zinc-900 p-5">
                 @if($fanfic->capa)
                     <img src="{{ asset('storage/' . $fanfic->capa) }}" alt="Capa"
                         class="mb-5 h-80 w-full border border-zinc-800 object-cover">
@@ -37,10 +37,14 @@
                     Fanfic
                 </div>
 
-                <h1 class="mt-2 text-3xl font-black text-white">{{ $fanfic->titulo }}</h1>
+                <h1 class="mt-2 break-words text-3xl font-black text-white">
+                    {{ $fanfic->titulo }}
+                </h1>
 
                 @if($fanfic->resumo)
-                    <p class="mt-4 text-sm leading-6 text-zinc-300">{{ $fanfic->resumo }}</p>
+                    <div class="mt-4 overflow-hidden break-words whitespace-pre-wrap text-sm leading-6 text-zinc-300">
+                        {{ $fanfic->resumo }}
+                    </div>
                 @endif
 
                 <div class="mt-6 grid gap-3">
@@ -56,7 +60,7 @@
                 </div>
             </aside>
 
-            <section class="border border-zinc-800 bg-zinc-900 p-6">
+            <section class="min-w-0 border border-zinc-800 bg-zinc-900 p-6">
                 <div class="flex items-center justify-between gap-4 border-b border-zinc-800 pb-4">
                     <div>
                         <div class="text-xs font-extrabold uppercase tracking-[0.18em] text-red-400">
@@ -72,13 +76,13 @@
 
                 <div class="mt-6 space-y-4">
                     @forelse($fanfic->capitulos as $capitulo)
-                        <div class="border border-zinc-800 bg-black/20 p-4">
+                        <div class="min-w-0 border border-zinc-800 bg-black/20 p-4">
                             <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-                                <div>
+                                <div class="min-w-0">
                                     <div class="text-xs font-extrabold uppercase tracking-[0.18em] {{ $capitulo->publicado ? 'text-emerald-400' : 'text-amber-400' }}">
                                         {{ $capitulo->publicado ? 'Publicado' : 'Rascunho' }}
                                     </div>
-                                    <h3 class="mt-2 text-xl font-black text-white">
+                                    <h3 class="mt-2 break-words text-xl font-black text-white">
                                         Capítulo {{ $capitulo->numero }} — {{ $capitulo->titulo }}
                                     </h3>
                                 </div>

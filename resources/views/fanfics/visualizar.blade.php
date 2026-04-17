@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -7,10 +6,10 @@
     <title>{{ $fanfic->titulo }}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen bg-zinc-950 text-zinc-100">
+<body class="min-h-screen overflow-x-hidden bg-zinc-950 text-zinc-100">
     <div class="mx-auto max-w-6xl px-4 py-8">
         <div class="grid gap-8 lg:grid-cols-[320px_minmax(0,1fr)]">
-            <aside class="border border-zinc-800 bg-zinc-900 p-5">
+            <aside class="min-w-0 border border-zinc-800 bg-zinc-900 p-5">
                 @if($fanfic->capa)
                     <img src="{{ asset('storage/' . $fanfic->capa) }}" alt="Capa"
                         class="mb-5 h-80 w-full border border-zinc-800 object-cover">
@@ -20,14 +19,18 @@
                     Fanfic
                 </div>
 
-                <h1 class="mt-2 text-3xl font-black text-white">{{ $fanfic->titulo }}</h1>
+                <h1 class="mt-2 break-words text-3xl font-black text-white">
+                    {{ $fanfic->titulo }}
+                </h1>
 
                 <div class="mt-3 text-sm text-zinc-500">
                     Por {{ $fanfic->usuario->nome_usuario ?? 'Autor' }}
                 </div>
 
                 @if($fanfic->resumo)
-                    <p class="mt-4 text-sm leading-6 text-zinc-300">{{ $fanfic->resumo }}</p>
+                    <div class="mt-4 overflow-hidden break-words whitespace-pre-wrap text-sm leading-6 text-zinc-300">
+                        {{ $fanfic->resumo }}
+                    </div>
                 @endif
 
                 <div class="mt-6 border border-zinc-800 bg-black/20 p-4 text-sm text-zinc-400">
@@ -35,7 +38,7 @@
                 </div>
             </aside>
 
-            <section class="border border-zinc-800 bg-zinc-900 p-6">
+            <section class="min-w-0 border border-zinc-800 bg-zinc-900 p-6">
                 <div class="border-b border-zinc-800 pb-4">
                     <div class="text-xs font-extrabold uppercase tracking-[0.18em] text-red-400">
                         Introdução
@@ -45,7 +48,9 @@
 
                 <div class="mt-6 space-y-6">
                     @if($fanfic->introducao)
-                        <div class="whitespace-pre-line leading-8 text-zinc-300">{{ $fanfic->introducao }}</div>
+                        <div class="overflow-hidden break-words whitespace-pre-wrap leading-8 text-zinc-300">
+                            {{ $fanfic->introducao }}
+                        </div>
                     @endif
 
                     <div class="border-t border-zinc-800 pt-6">
@@ -56,11 +61,13 @@
                         <div class="mt-4 space-y-3">
                             @forelse($fanfic->capitulos as $capitulo)
                                 <a href="{{ route('fanfics.capitulos.visualizar', [$fanfic->slug, $capitulo->numero]) }}"
-                                    class="block border border-zinc-800 bg-black/20 p-4 transition hover:border-red-700 hover:bg-zinc-800">
+                                    class="block min-w-0 border border-zinc-800 bg-black/20 p-4 transition hover:border-red-700 hover:bg-zinc-800">
                                     <div class="text-xs font-extrabold uppercase tracking-[0.18em] text-zinc-500">
                                         Capítulo {{ $capitulo->numero }}
                                     </div>
-                                    <div class="mt-2 text-lg font-black text-white">{{ $capitulo->titulo }}</div>
+                                    <div class="mt-2 break-words text-lg font-black text-white">
+                                        {{ $capitulo->titulo }}
+                                    </div>
                                 </a>
                             @empty
                                 <div class="border border-zinc-800 bg-black/20 p-4 text-zinc-400">

@@ -105,6 +105,12 @@
   <strong>Commit 007:</strong> Inserção de divisões das páginas de categorias.
 </blockquote>
 
+<blockquote>
+  <strong>Commit 008:</strong> Inserção de fotos aterrorizantes em cada categoria.
+</blockquote>
+
+
+
 <hr>
 
 <h2>🩸 Objetivo do Projeto</h2>

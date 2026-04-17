@@ -97,7 +97,9 @@
   <strong>Commit 005:</strong> Publicação de histórias e fanfics. Corrigir texto vazando em fanfics.
 </blockquote>
 
-
+<blockquote>
+  <strong>Commit 006:</strong> Correção da falta de quebra de texto das fanfics.
+</blockquote>
 
 <hr>
 

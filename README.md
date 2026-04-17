@@ -87,7 +87,10 @@
 
 <blockquote>
   <strong>Commit 003:</strong> Confecção da lógica de login, criação e edição de perfis. Insert de nova tabela para manipular biografias, usuários com perfil completo e desativados.
+</blockquote>
 
+<blockquote>
+  <strong>Commit 003:</strong> Implementação completa da página de perfil com foto.
 </blockquote>
 
 <hr>

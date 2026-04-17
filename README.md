@@ -60,8 +60,8 @@
 
 <ul>
   <li>✅ Landing page inicial</li>
-  <li>⬜ Sistema de autenticação</li>
-  <li>⬜ Cadastro e login de usuários</li>
+  <li>✅ Sistema de autenticação</li>
+  <li>✅ Cadastro e login de usuários</li>
   <li>⬜ Publicação de fanfics</li>
   <li>⬜ Sistema de capítulos</li>
   <li>⬜ Fórum de discussões</li>

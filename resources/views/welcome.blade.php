@@ -14,9 +14,11 @@
 </head>
 
 <body class="bg-zinc-950 text-zinc-100 antialiased selection:bg-red-700/40 selection:text-white">
-    <div class="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(127,29,29,0.22),_transparent_30%),linear-gradient(180deg,_#140406_0%,_#0b0b0d_40%,_#09090b_100%)]">
+    <div
+        class="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(127,29,29,0.22),_transparent_30%),linear-gradient(180deg,_#140406_0%,_#0b0b0d_40%,_#09090b_100%)]">
 
-        <aside class="fixed left-0 top-0 z-40 hidden h-screen w-16 border-r border-zinc-800 bg-zinc-950/95 md:flex md:flex-col md:justify-between">
+        <aside
+            class="fixed left-0 top-0 z-40 hidden h-screen w-16 border-r border-zinc-800 bg-zinc-950/95 md:flex md:flex-col md:justify-between">
             <div class="flex flex-col items-center gap-3 pt-4">
                 <a href="{{ route('home') }}"
                     class="flex w-full flex-col items-center gap-1 border-l-2 border-red-600 py-2 text-zinc-200">
@@ -63,7 +65,8 @@
 
                 <div class="hidden flex-1 justify-center xl:flex">
                     <div class="w-full max-w-lg">
-                        <div class="flex items-center border border-zinc-700 bg-zinc-900 px-4 py-2 shadow-lg shadow-black/20 transition focus-within:border-red-700">
+                        <div
+                            class="flex items-center border border-zinc-700 bg-zinc-900 px-4 py-2 shadow-lg shadow-black/20 transition focus-within:border-red-700">
                             <input type="text" placeholder="Pesquisar lendas, criaturas e histórias..."
                                 class="w-full bg-transparent text-sm text-zinc-200 placeholder:text-zinc-500 focus:outline-none">
                             <button class="ml-3 text-zinc-500 transition hover:text-red-400" aria-label="Pesquisar">
@@ -92,12 +95,15 @@
 
         <main class="md:pl-16">
             <section class="relative overflow-hidden border-b border-zinc-800">
-                <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(239,68,68,0.12),transparent_18%),radial-gradient(circle_at_83%_26%,rgba(168,85,247,0.08),transparent_16%),radial-gradient(circle_at_50%_78%,rgba(220,38,38,0.08),transparent_20%)]"></div>
+                <div
+                    class="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(239,68,68,0.12),transparent_18%),radial-gradient(circle_at_83%_26%,rgba(168,85,247,0.08),transparent_16%),radial-gradient(circle_at_50%_78%,rgba(220,38,38,0.08),transparent_20%)]">
+                </div>
 
                 <div class="relative mx-auto max-w-[1440px] px-4 py-10 md:px-8 md:py-14">
                     <div class="mx-auto max-w-6xl">
                         <div class="mb-8 flex justify-center">
-                            <div class="w-full max-w-3xl border border-zinc-800 bg-black/35 px-6 py-6 text-center shadow-2xl shadow-black/30">
+                            <div
+                                class="w-full max-w-3xl border border-zinc-800 bg-black/35 px-6 py-6 text-center shadow-2xl shadow-black/30">
                                 <img src="{{ asset('images/logo.png') }}" alt="HorrorWiki"
                                     class="mx-auto h-28 w-auto object-contain md:h-40">
                                 <p class="mt-3 text-sm text-zinc-400 md:text-base">
@@ -107,7 +113,8 @@
                         </div>
 
                         <div class="mx-auto mb-8 max-w-3xl">
-                            <div class="flex items-center border border-red-950/70 bg-zinc-950/90 px-4 py-3 shadow-xl shadow-black/30 transition focus-within:border-red-700">
+                            <div
+                                class="flex items-center border border-red-950/70 bg-zinc-950/90 px-4 py-3 shadow-xl shadow-black/30 transition focus-within:border-red-700">
                                 <input type="text"
                                     placeholder="Pesquise criaturas, fóruns, fanfics e relatos macabros..."
                                     class="w-full bg-transparent text-sm text-zinc-100 placeholder:text-zinc-500 focus:outline-none">
@@ -134,19 +141,45 @@
                             </div>
                         </div>
 
+                        @php
+                            $imagensCategorias = [
+                                'fanfics-de-terror' => 'https://s2-techtudo.glbimg.com/qWhQt4ZC7n3EHSpbxhAhDfkst_E=/0x0:2488x1360/600x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2024/k/Y/b1UU1ASoyF6AtCwVRewQ/captura-de-tela-2024-09-06-as-15.42.24.png',
+                                'relatos-reais' => 'https://tm.ibxk.com.br/2022/10/31/31101704398068.jpg',
+                                'contos-macabros' => 'https://i.pinimg.com/474x/89/3c/bc/893cbc25aaa02410eb3880fe925af2b0.jpg',
+                                'lendas' => 'https://i.pinimg.com/originals/a1/e6/8b/a1e68b6ed89a525d1138ece9df227246.jpg',
+                                'encontros-sobrenaturais' => 'https://static.wikia.nocookie.net/the-uncanny-incredible/images/b/b0/334UCFN.jpg/revision/latest?cb=20250821125437',
+                                'creepypastas' => 'https://tse4.mm.bing.net/th/id/OIP.uDwDCINxszrSv92CSPf3mgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
+                                'casos-paranormais' => 'https://i.ytimg.com/vi/oAI4OLYx7Y4/maxresdefault.jpg',
+                                'misterios-sem-explicacao' => 'https://tse2.mm.bing.net/th/id/OIP.FK3iwrz1jqS8fP3UcumrHQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3',
+                                'horror-psicologico' => 'https://tse4.mm.bing.net/th/id/OIP.IiXtm_Bd7EkCRp8EAx7c-AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',
+                                'criaturas-e-entidades' => 'https://tse1.mm.bing.net/th/id/OIP.IZFrGRJguW3UkLtvS1X7SQHaFP?rs=1&pid=ImgDetMain&o=7&rm=3',
+                            ];
+                        @endphp
+
                         <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
                             @forelse($categorias as $categoria)
+                                @php
+                                    $imagemCategoria = $imagensCategorias[$categoria->slug] ?? 'https://images.unsplash.com/photo-1509475826633-fed577a2c71b?q=80&w=1200&auto=format&fit=crop';
+                                @endphp
+
                                 <a href="{{ route('categorias.show', $categoria->slug) }}"
                                     class="group overflow-hidden border border-red-950/60 bg-zinc-900/75 shadow-xl shadow-black/20 transition duration-300 hover:-translate-y-1 hover:border-red-700">
-                                    <div class="relative h-40 overflow-hidden border-b border-zinc-800 bg-[linear-gradient(135deg,rgba(127,29,29,0.95)_0%,rgba(24,24,27,0.75)_55%,rgba(9,9,11,0.95)_100%)]">
-                                        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_20%,rgba(255,255,255,0.22),transparent_18%),radial-gradient(circle_at_75%_30%,rgba(255,255,255,0.08),transparent_16%),radial-gradient(circle_at_55%_75%,rgba(255,255,255,0.08),transparent_18%)]"></div>
 
-                                        <span class="absolute left-3 top-3 bg-red-700 px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white">
+                                    <div class="relative h-48 overflow-hidden border-b border-zinc-800">
+                                        <img src="{{ $imagemCategoria }}" alt="{{ $categoria->nome }}"
+                                            class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
+
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-transparent">
+                                        </div>
+
+                                        <span
+                                            class="absolute left-3 top-3 bg-red-700 px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white">
                                             {{ $categoria->tipo === 'fanfic' ? 'FANFIC' : 'HISTÓRIA' }}
                                         </span>
 
                                         <div class="absolute inset-x-0 bottom-0 p-4">
-                                            <h3 class="text-lg font-black leading-6 text-white">
+                                            <h3 class="text-lg font-black leading-6 text-white drop-shadow">
                                                 {{ $categoria->nome }}
                                             </h3>
                                         </div>
@@ -172,7 +205,8 @@
                         <div class="mt-8 border border-zinc-800 bg-black/30 p-5">
                             <div class="grid gap-6 md:grid-cols-3">
                                 <div>
-                                    <button class="bg-yellow-400 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-black">
+                                    <button
+                                        class="bg-yellow-400 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-black">
                                         Categorias ativas
                                     </button>
                                 </div>
@@ -225,7 +259,8 @@
                         </div>
                     </div>
 
-                    <aside class="border border-zinc-800 bg-gradient-to-br from-zinc-900 to-red-950/30 p-5 shadow-xl shadow-black/20">
+                    <aside
+                        class="border border-zinc-800 bg-gradient-to-br from-zinc-900 to-red-950/30 p-5 shadow-xl shadow-black/20">
                         <div class="mb-3 text-xs font-extrabold uppercase tracking-[0.2em] text-red-400">
                             Em alta
                         </div>
@@ -235,7 +270,8 @@
                         </h3>
 
                         <p class="mt-3 text-sm leading-6 text-zinc-300">
-                            Agora a HorrorWiki já puxa as categorias diretamente do banco, facilitando a expansão do portal por temas.
+                            Agora a HorrorWiki já puxa as categorias diretamente do banco, facilitando a expansão do
+                            portal por temas.
                         </p>
 
                         <div class="mt-6 space-y-3">
@@ -256,21 +292,24 @@
                         <div class="border border-zinc-800 bg-zinc-900/40 p-5">
                             <h4 class="text-sm font-black uppercase tracking-[0.18em] text-red-400">Categorias</h4>
                             <p class="mt-3 text-sm leading-6 text-zinc-400">
-                                Explore relatos reais, contos macabros, lendas, fanfics e outras vertentes do horror organizadas por tema.
+                                Explore relatos reais, contos macabros, lendas, fanfics e outras vertentes do horror
+                                organizadas por tema.
                             </p>
                         </div>
 
                         <div class="border border-zinc-800 bg-zinc-900/40 p-5">
                             <h4 class="text-sm font-black uppercase tracking-[0.18em] text-red-400">Fanfics</h4>
                             <p class="mt-3 text-sm leading-6 text-zinc-400">
-                                Fanfics agora seguem estrutura própria, com capa, resumo, introdução e capítulos independentes.
+                                Fanfics agora seguem estrutura própria, com capa, resumo, introdução e capítulos
+                                independentes.
                             </p>
                         </div>
 
                         <div class="border border-zinc-800 bg-zinc-900/40 p-5">
                             <h4 class="text-sm font-black uppercase tracking-[0.18em] text-red-400">Histórias</h4>
                             <p class="mt-3 text-sm leading-6 text-zinc-400">
-                                Histórias comuns continuam separadas das fanfics, deixando o sistema mais limpo e escalável.
+                                Histórias comuns continuam separadas das fanfics, deixando o sistema mais limpo e
+                                escalável.
                             </p>
                         </div>
                     </div>

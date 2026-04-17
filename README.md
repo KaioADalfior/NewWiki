@@ -101,6 +101,10 @@
   <strong>Commit 006:</strong> Correção da falta de quebra de texto das fanfics.
 </blockquote>
 
+<blockquote>
+  <strong>Commit 007:</strong> Inserção de divisões das páginas de categorias.
+</blockquote>
+
 <hr>
 
 <h2>🩸 Objetivo do Projeto</h2>

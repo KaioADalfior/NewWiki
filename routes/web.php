@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\CategoriaHistoria;
 use App\Http\Controllers\Auth\CadastroController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PerfilController;
@@ -48,7 +49,11 @@ Route::get('/home', function () {
         return redirect()->route('login');
     }
 
-    return view('home-logado');
+    $categorias = CategoriaHistoria::where('ativa', true)
+        ->orderBy('nome')
+        ->get();
+
+    return view('home-logado', compact('categorias'));
 })->name('home.logado');
 
 /*

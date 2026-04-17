@@ -15,11 +15,9 @@
     <div id="pageWrapper"
         class="min-h-screen transition-all duration-300 bg-[radial-gradient(circle_at_top,_rgba(127,29,29,0.22),_transparent_30%),linear-gradient(180deg,_#140406_0%,_#0b0b0d_40%,_#09090b_100%)]">
 
-        <!-- OVERLAY -->
         <div id="profileOverlay"
             class="pointer-events-none fixed inset-0 z-40 bg-black/40 opacity-0 transition duration-300"></div>
 
-        <!-- SIDEBAR ESQUERDA -->
         <aside
             class="fixed left-0 top-0 z-40 hidden h-screen w-16 border-r border-zinc-800 bg-zinc-950/95 md:flex md:flex-col md:justify-between">
             <div class="flex flex-col items-center gap-3 pt-4">
@@ -59,12 +57,10 @@
             </div>
         </aside>
 
-        <!-- SIDEBAR DIREITA DO PERFIL -->
         <aside id="profileSidebar"
             class="fixed right-0 top-0 z-50 h-screen w-[320px] max-w-[88vw] translate-x-full border-l border-zinc-800 bg-zinc-950 shadow-2xl transition-transform duration-300">
 
             <div class="flex h-full flex-col">
-                <!-- TOPO -->
                 <div class="flex items-center justify-between border-b border-zinc-800 px-4 py-4">
                     <h2 class="text-lg font-black text-white">Sua conta</h2>
 
@@ -74,7 +70,6 @@
                     </button>
                 </div>
 
-                <!-- CONTEÚDO -->
                 <div class="flex-1 overflow-y-auto px-5 py-6">
                     <div class="flex flex-col items-center text-center">
                         <div
@@ -120,7 +115,6 @@
                     </div>
                 </div>
 
-                <!-- RODAPÉ -->
                 <div class="border-t border-zinc-800 p-5">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
@@ -133,7 +127,6 @@
             </div>
         </aside>
 
-        <!-- HEADER -->
         <header class="sticky top-0 z-30 border-b border-zinc-800 bg-zinc-950/90 backdrop-blur">
             <div class="mx-auto flex max-w-[1440px] items-center justify-between gap-4 px-4 py-3 md:pl-24 md:pr-6">
                 <div class="flex items-center gap-3">
@@ -164,7 +157,6 @@
                         <div class="text-sm font-bold text-white">{{ session('usuario_nome') }}</div>
                     </div>
 
-                    <!-- BOTÃO DE PERFIL COM ÍCONE SVG -->
                     <button id="openProfileSidebar" type="button"
                         class="group flex h-12 w-12 items-center justify-center rounded-md border-2 border-zinc-700 bg-zinc-900 text-zinc-400 transition hover:border-red-700 hover:bg-zinc-800 hover:text-white"
                         aria-label="Abrir perfil">
@@ -192,8 +184,7 @@
                                     Bem-vindo de volta, {{ session('usuario_nome') }}
                                 </h1>
                                 <p class="mt-3 max-w-2xl text-sm leading-7 text-zinc-400 md:text-base">
-                                    Continue explorando relatos macabros, universos de horror, fanfics e wikis
-                                    sombrias.
+                                    Continue explorando relatos macabros, universos de horror, fanfics e wikis sombrias.
                                 </p>
                             </div>
 
@@ -204,76 +195,92 @@
                         </div>
 
                         @php
-                            $cards = [
-                                ['cat' => 'FANFIC', 'title' => 'A Noiva da Casa do Bosque Negro', 'img' => 'https://images.unsplash.com/photo-1509248961158-e54f6934749c?q=80&w=1200&auto=format&fit=crop'],
-                                ['cat' => 'CRIATURAS', 'title' => 'Depois de 11 Anos, O Colecionador de Ossos Voltou', 'img' => 'https://images.unsplash.com/photo-1518709268805-4e9042af2176?q=80&w=1200&auto=format&fit=crop'],
-                                ['cat' => 'FÓRUM', 'title' => 'As 7 Teorias Mais Perturbadoras da Ilha Neblina', 'img' => 'https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop'],
-                                ['cat' => 'WIKI', 'title' => 'Entenda o Ritual das Portas Vermelhas', 'img' => 'https://images.unsplash.com/photo-1473445361085-b9a07f55608b?q=80&w=1200&auto=format&fit=crop'],
-                                ['cat' => 'REVIEW', 'title' => 'Pragmata do Medo: a Maldição da Fábrica Hollow', 'img' => 'https://images.unsplash.com/photo-1483982258113-b72862e6cff6?q=80&w=1200&auto=format&fit=crop'],
-                                ['cat' => 'SÉRIES', 'title' => 'O Que Assistir: Horror Cósmico, Found Footage e Mais', 'img' => 'https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?q=80&w=1200&auto=format&fit=crop'],
+                            $imagensCategorias = [
+                                'fanfics-de-terror' => 'https://s2-techtudo.glbimg.com/qWhQt4ZC7n3EHSpbxhAhDfkst_E=/0x0:2488x1360/600x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2024/k/Y/b1UU1ASoyF6AtCwVRewQ/captura-de-tela-2024-09-06-as-15.42.24.png',
+                                'relatos-reais' => 'https://tm.ibxk.com.br/2022/10/31/31101704398068.jpg',
+                                'contos-macabros' => 'https://i.pinimg.com/474x/89/3c/bc/893cbc25aaa02410eb3880fe925af2b0.jpg',
+                                'lendas' => 'https://i.pinimg.com/originals/a1/e6/8b/a1e68b6ed89a525d1138ece9df227246.jpg',
+                                'encontros-sobrenaturais' => 'https://static.wikia.nocookie.net/the-uncanny-incredible/images/b/b0/334UCFN.jpg/revision/latest?cb=20250821125437',
+                                'creepypastas' => 'https://tse4.mm.bing.net/th/id/OIP.uDwDCINxszrSv92CSPf3mgHaEK?rs=1&pid=ImgDetMain&o=7&rm=3',
+                                'casos-paranormais' => 'https://i.ytimg.com/vi/oAI4OLYx7Y4/maxresdefault.jpg',
+                                'misterios-sem-explicacao' => 'https://tse2.mm.bing.net/th/id/OIP.FK3iwrz1jqS8fP3UcumrHQAAAA?rs=1&pid=ImgDetMain&o=7&rm=3',
+                                'horror-psicologico' => 'https://tse4.mm.bing.net/th/id/OIP.IiXtm_Bd7EkCRp8EAx7c-AHaE7?rs=1&pid=ImgDetMain&o=7&rm=3',
+                                'criaturas-e-entidades' => 'https://tse1.mm.bing.net/th/id/OIP.IZFrGRJguW3UkLtvS1X7SQHaFP?rs=1&pid=ImgDetMain&o=7&rm=3',
                             ];
                         @endphp
 
-                        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-6">
-                            @foreach($cards as $card)
-                                <article
+                        <div class="mb-4 flex items-center justify-between">
+                            <div>
+                                <div class="text-xs font-extrabold uppercase tracking-[0.18em] text-red-400">
+                                    Categorias
+                                </div>
+                                <h2 class="mt-2 text-2xl font-black text-white">
+                                    Explore todos os temas da HorrorWiki
+                                </h2>
+                            </div>
+                        </div>
+
+                        <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
+                            @forelse($categorias as $categoria)
+                                @php
+                                    $imagemCategoria = $imagensCategorias[$categoria->slug] ?? 'https://i.pinimg.com/474x/89/3c/bc/893cbc25aaa02410eb3880fe925af2b0.jpg';
+                                @endphp
+
+                                <a href="{{ route('categorias.show', $categoria->slug) }}"
                                     class="group overflow-hidden border border-red-950/60 bg-zinc-900/75 shadow-xl shadow-black/20 transition duration-300 hover:-translate-y-1 hover:border-red-700">
-                                    <div class="relative h-40 overflow-hidden border-b border-zinc-800">
-                                        <img src="{{ $card['img'] }}" alt="{{ $card['title'] }}"
+
+                                    <div class="relative h-44 overflow-hidden border-b border-zinc-800">
+                                        <img src="{{ $imagemCategoria }}"
+                                            alt="{{ $categoria->nome }}"
                                             class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
-                                        <div
-                                            class="absolute inset-0 bg-gradient-to-t from-black via-black/25 to-transparent">
-                                        </div>
+
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent"></div>
+
                                         <span
                                             class="absolute left-3 top-3 bg-red-700 px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white">
-                                            {{ $card['cat'] }}
+                                            {{ $categoria->tipo === 'fanfic' ? 'FANFIC' : 'HISTÓRIA' }}
                                         </span>
+
+                                        <div class="absolute inset-x-0 bottom-0 p-4">
+                                            <h3 class="text-lg font-black leading-6 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+                                                {{ $categoria->nome }}
+                                            </h3>
+                                        </div>
                                     </div>
+
                                     <div class="p-4">
-                                        <h3 class="line-clamp-3 text-sm font-bold leading-5 text-white">
-                                            {{ $card['title'] }}
-                                        </h3>
+                                        <p class="line-clamp-3 text-sm leading-6 text-zinc-400">
+                                            {{ $categoria->descricao ?: 'Explore esta categoria e descubra histórias sombrias.' }}
+                                        </p>
+
+                                        <div class="mt-4 text-xs font-extrabold uppercase tracking-[0.18em] text-red-400">
+                                            Explorar categoria →
+                                        </div>
                                     </div>
-                                </article>
-                            @endforeach
+                                </a>
+                            @empty
+                                <div class="col-span-full border border-zinc-800 bg-zinc-900/70 p-6 text-zinc-400">
+                                    Nenhuma categoria cadastrada ainda.
+                                </div>
+                            @endforelse
                         </div>
 
                         <div class="mt-8 border border-zinc-800 bg-black/30 p-5">
-                            <div class="grid gap-6 md:grid-cols-6">
+                            <div class="grid gap-6 md:grid-cols-3">
                                 <div>
                                     <button
                                         class="bg-yellow-400 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.16em] text-black">
-                                        Top Wikis
+                                        Categorias ativas
                                     </button>
                                 </div>
 
                                 <div>
                                     <h4 class="mb-2 text-xs font-extrabold uppercase tracking-[0.18em] text-red-400">
-                                        Criaturas</h4>
+                                        Histórias</h4>
                                     <ul class="space-y-1 text-sm text-zinc-300">
-                                        <li>Wendigo</li>
-                                        <li>Homem-Pálido</li>
-                                        <li>Dama do Lago Negro</li>
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <h4 class="mb-2 text-xs font-extrabold uppercase tracking-[0.18em] text-red-400">
-                                        Lugares</h4>
-                                    <ul class="space-y-1 text-sm text-zinc-300">
-                                        <li>Sanatório Hollow</li>
-                                        <li>Floresta Moura</li>
-                                        <li>Capela das Velas</li>
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <h4 class="mb-2 text-xs font-extrabold uppercase tracking-[0.18em] text-red-400">
-                                        Fórum</h4>
-                                    <ul class="space-y-1 text-sm text-zinc-300">
-                                        <li>Teorias</li>
-                                        <li>Relatos sobrenaturais</li>
-                                        <li>Debates de filmes</li>
+                                        @foreach($categorias->where('tipo', 'historia')->take(5) as $cat)
+                                            <li>{{ $cat->nome }}</li>
+                                        @endforeach
                                     </ul>
                                 </div>
 
@@ -281,21 +288,10 @@
                                     <h4 class="mb-2 text-xs font-extrabold uppercase tracking-[0.18em] text-red-400">
                                         Fanfics</h4>
                                     <ul class="space-y-1 text-sm text-zinc-300">
-                                        <li>Psicológico</li>
-                                        <li>Gore</li>
-                                        <li>Sobrenatural</li>
+                                        @foreach($categorias->where('tipo', 'fanfic')->take(5) as $cat)
+                                            <li>{{ $cat->nome }}</li>
+                                        @endforeach
                                     </ul>
-                                </div>
-
-                                <div class="flex items-center justify-between gap-3 md:justify-end">
-                                    <div class="text-sm text-zinc-400">
-                                        Mais de <span class="font-bold text-white">250.000</span> histórias para
-                                        explorar
-                                    </div>
-                                    <button
-                                        class="flex h-10 w-10 items-center justify-center border border-red-900 bg-red-700 text-white transition hover:bg-red-600">
-                                        →
-                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -437,7 +433,6 @@
         const closeProfileSidebar = document.getElementById('closeProfileSidebar');
         const profileSidebar = document.getElementById('profileSidebar');
         const profileOverlay = document.getElementById('profileOverlay');
-        const pageWrapper = document.getElementById('pageWrapper');
 
         function abrirSidebarPerfil() {
             profileSidebar.classList.remove('translate-x-full');

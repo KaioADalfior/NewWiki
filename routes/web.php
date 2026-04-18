@@ -9,6 +9,7 @@ use App\Http\Controllers\FanficController;
 use App\Http\Controllers\HistoriaController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoriaController;
+use Illuminate\Support\Facades\Mail;
 
 /*
 |--------------------------------------------------------------------------
@@ -99,3 +100,12 @@ Route::get('/fanfic/{slug}/capitulo/{numero}', [FanficController::class, 'visual
 |--------------------------------------------------------------------------
 */
 Route::get('/categorias/{slug}', [CategoriaController::class, 'show'])->name('categorias.show');
+
+Route::get('/teste-email', function () {
+    Mail::raw('Teste de envio funcionando!', function ($message) {
+        $message->to('kaio.andriao.dalfior@gmail.com')
+                ->subject('Teste HorrorWiki');
+    });
+
+    return 'Email enviado!';
+});

@@ -117,9 +117,9 @@
   <strong>Commit 010:</strong> Correção visual nas páginas de Login e Cadastro e implementação de envio de emails ao se cadastrar.
 </blockquote>
 
-
-
-
+<blockquote>
+  <strong>Commit 011:</strong> Confecção da página de desenvolvedor com controladores da música "Daisy" que toca de fundo.
+</blockquote>
 
 <hr>
 

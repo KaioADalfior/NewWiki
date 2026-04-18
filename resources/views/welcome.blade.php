@@ -315,7 +315,10 @@
                     </div>
 
                     <div class="mt-8 border-t border-zinc-800 pt-6 text-sm text-zinc-500">
-                        © {{ date('Y') }} HorrorWiki — onde toda história deixa marcas. - <a href="#" class="text-red-400 hover:text-red-300">Sobre o Desenvolvedor</a>
+                        © {{ date('Y') }} HorrorWiki — onde toda história deixa marcas. - <a
+                            href="{{ route('desenvolvedor') }}" class="text-red-400 hover:text-red-300">
+                            Sobre o Desenvolvedor
+                        </a>
                     </div>
                 </div>
             </section>

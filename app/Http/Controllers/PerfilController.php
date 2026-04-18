@@ -35,7 +35,13 @@ class PerfilController extends Controller
     {
         $request->validate([
             'bio' => 'nullable|string|max:1000',
-            'foto_perfil' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'foto_perfil' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ], [
+            'bio.max' => 'A bio deve ter no máximo 1000 caracteres.',
+            'foto_perfil.uploaded' => 'Falha ao enviar a imagem.',
+            'foto_perfil.image' => 'O arquivo enviado precisa ser uma imagem.',
+            'foto_perfil.mimes' => 'A imagem deve ser JPG, JPEG, PNG ou WEBP.',
+            'foto_perfil.max' => 'A imagem deve ter no máximo 5 MB.',
         ]);
 
         $usuarioId = session('usuario_id');

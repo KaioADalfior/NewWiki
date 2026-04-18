@@ -113,6 +113,10 @@
   <strong>Commit 009:</strong> Correção de rotas e da página home após login.
 </blockquote>
 
+<blockquote>
+  <strong>Commit 010:</strong> Correção visual nas páginas de Login e Cadastro e implementação de envio de emails ao se cadastrar.
+</blockquote>
+
 
 
 

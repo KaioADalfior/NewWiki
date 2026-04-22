@@ -317,6 +317,12 @@
                                 class="block w-full border border-zinc-700 bg-black/20 px-4 py-3 text-left text-sm font-semibold text-zinc-300 transition hover:border-red-700 hover:bg-zinc-800 hover:text-red-300">
                                 Editar informações do perfil
                             </button>
+
+                            <button id="openPasswordModal" type="button"
+                                class="block w-full border border-zinc-700 bg-black/20 px-4 py-3 text-left text-sm font-semibold text-zinc-300 transition hover:border-red-700 hover:bg-zinc-800 hover:text-red-300">
+                                Alterar senha
+                            </button>
+
                             <a href="#"
                                 class="block border border-zinc-700 bg-black/20 px-4 py-3 text-sm font-semibold text-zinc-300 transition hover:border-red-700 hover:bg-zinc-800 hover:text-red-300">Gerenciar
                                 contribuições</a>
@@ -391,9 +397,15 @@
         </main>
     </div>
 
+    {{-- ============================================================
+    MODAIS
+    ============================================================ --}}
+
+    {{-- Overlay do modal de edição --}}
     <div id="modalOverlay" class="pointer-events-none fixed inset-0 z-40 bg-black/70 opacity-0 transition duration-300">
     </div>
 
+    {{-- Modal de edição de perfil --}}
     <div id="editModal"
         class="pointer-events-none fixed inset-0 z-50 flex items-center justify-center px-4 opacity-0 transition duration-300">
         <div class="w-full max-w-2xl border border-zinc-800 bg-zinc-900 p-8 shadow-[0_25px_80px_rgba(0,0,0,0.55)]">
@@ -435,7 +447,7 @@
                     </label>
 
                     <input type="file" name="foto_perfil" accept="image/*"
-                        class="w-full border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-300 file:mr-4 file:border-0 file:bg-red-700 file:px-4 file:py-2 file:text-white file:cursor-pointer">
+                        class="w-full border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-300 file:mr-4 file:cursor-pointer file:border-0 file:bg-red-700 file:px-4 file:py-2 file:text-white">
 
                     @if($fotoPerfilUrl)
                         <div class="mt-4 flex items-center gap-4 border border-zinc-800 bg-black/20 p-4">
@@ -477,9 +489,11 @@
         </div>
     </div>
 
+    {{-- Overlay do modal de desativação --}}
     <div id="deactivateOverlay"
         class="pointer-events-none fixed inset-0 z-[55] bg-black/80 opacity-0 transition duration-300"></div>
 
+    {{-- Modal de confirmação de desativação --}}
     <div id="deactivateModal"
         class="pointer-events-none fixed inset-0 z-[60] flex items-center justify-center px-4 opacity-0 transition duration-300">
         <div class="w-full max-w-md border border-zinc-800 bg-zinc-900 p-6 shadow-[0_25px_80px_rgba(0,0,0,0.55)]">
@@ -507,56 +521,11 @@
         </div>
     </div>
 
-    <script>
-        const openEditModal = document.getElementById('openEditModal');
-        const openEditModalAside = document.getElementById('openEditModalAside');
-        const closeEditModal = document.getElementById('closeEditModal');
-        const modalOverlay = document.getElementById('modalOverlay');
-        const editModal = document.getElementById('editModal');
-
-        const openDeactivateConfirm = document.getElementById('openDeactivateConfirm');
-        const closeDeactivateModal = document.getElementById('closeDeactivateModal');
-        const deactivateOverlay = document.getElementById('deactivateOverlay');
-        const deactivateModal = document.getElementById('deactivateModal');
-
-        function abrirModal() {
-            modalOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            editModal.classList.remove('opacity-0', 'pointer-events-none');
-        }
-
-        function fecharModal() {
-            modalOverlay.classList.add('opacity-0', 'pointer-events-none');
-            editModal.classList.add('opacity-0', 'pointer-events-none');
-        }
-
-        function abrirModalDesativacao() {
-            deactivateOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            deactivateModal.classList.remove('opacity-0', 'pointer-events-none');
-        }
-
-        function fecharModalDesativacao() {
-            deactivateOverlay.classList.add('opacity-0', 'pointer-events-none');
-            deactivateModal.classList.add('opacity-0', 'pointer-events-none');
-        }
-
-        openEditModal?.addEventListener('click', abrirModal);
-        openEditModalAside?.addEventListener('click', abrirModal);
-        closeEditModal?.addEventListener('click', fecharModal);
-        modalOverlay?.addEventListener('click', fecharModal);
-
-        openDeactivateConfirm?.addEventListener('click', abrirModalDesativacao);
-        closeDeactivateModal?.addEventListener('click', fecharModalDesativacao);
-        deactivateOverlay?.addEventListener('click', fecharModalDesativacao);
-
-        @if ($errors->any())
-            abrirModal();
-        @endif
-    </script>
-
-
+    {{-- Overlay do modal de nova história --}}
     <div id="storyOverlay"
         class="pointer-events-none fixed inset-0 z-[70] bg-black/70 opacity-0 transition duration-300"></div>
 
+    {{-- Modal de nova história --}}
     <div id="storyModal"
         class="pointer-events-none fixed inset-0 z-[80] flex items-center justify-center px-4 opacity-0 transition duration-300">
         <div class="w-full max-w-3xl border border-zinc-800 bg-zinc-900 p-6 shadow-[0_25px_80px_rgba(0,0,0,0.55)]">
@@ -584,68 +553,204 @@
         </div>
     </div>
 
+    {{-- Overlay do modal de senha --}}
+    <div id="passwordOverlay"
+        class="pointer-events-none fixed inset-0 z-[85] bg-black/80 opacity-0 transition duration-300"></div>
 
+    {{-- Modal de alteração de senha --}}
+    <div id="passwordModal"
+        class="pointer-events-none fixed inset-0 z-[90] flex items-center justify-center px-4 opacity-0 transition duration-300">
+        <div class="w-full max-w-md border border-zinc-800 bg-zinc-900 p-6 shadow-[0_25px_80px_rgba(0,0,0,0.55)]">
+            <div class="mb-6 flex items-center justify-between border-b border-zinc-800 pb-4">
+                <h3 class="text-xl font-black text-white">Alterar senha</h3>
+
+                <button id="closePasswordModal" type="button"
+                    class="flex h-10 w-10 items-center justify-center border border-zinc-700 bg-zinc-950 text-zinc-300 transition hover:border-red-700 hover:text-white">
+                    ✕
+                </button>
+            </div>
+
+            <form action="{{ route('perfil.alterarSenha') }}" method="POST" class="space-y-5">
+                @csrf
+
+                <div>
+                    <label class="mb-2 block text-xs font-extrabold uppercase tracking-[0.16em] text-zinc-500">
+                        Nova senha
+                    </label>
+
+                    <input type="password" name="nova_senha"
+                        class="w-full border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-100 focus:border-red-700 focus:outline-none">
+                </div>
+
+                <div>
+                    <label class="mb-2 block text-xs font-extrabold uppercase tracking-[0.16em] text-zinc-500">
+                        Repetir nova senha
+                    </label>
+
+                    <input type="password" name="nova_senha_confirmation"
+                        class="w-full border border-zinc-800 bg-zinc-950 px-4 py-3 text-zinc-100 focus:border-red-700 focus:outline-none">
+                </div>
+
+                <div class="border-t border-zinc-800 pt-5">
+                    <button type="submit"
+                        class="w-full bg-red-700 px-6 py-3 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-600">
+                        Alterar senha
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {{-- ============================================================
+    SCRIPT ÚNICO — todas as lógicas de modal consolidadas aqui
+    ============================================================ --}}
     <script>
-    const openStoryModal = document.getElementById('openStoryModal');
-        const closeStoryModal = document.getElementById('closeStoryModal');
+        // ── Referências ──────────────────────────────────────────────
+        const modalOverlay = document.getElementById('modalOverlay');
+        const editModal = document.getElementById('editModal');
+
+        const deactivateOverlay = document.getElementById('deactivateOverlay');
+        const deactivateModal = document.getElementById('deactivateModal');
+
         const storyOverlay = document.getElementById('storyOverlay');
         const storyModal = document.getElementById('storyModal');
         const storyCategories = document.getElementById('storyCategories');
 
-        function abrirStoryModal() {
-            storyOverlay.classList.remove('opacity-0', 'pointer-events-none');
-            storyModal.classList.remove('opacity-0', 'pointer-events-none');
-            carregarCategorias();
+        const passwordOverlay = document.getElementById('passwordOverlay');
+        const passwordModal = document.getElementById('passwordModal');
+
+        let categoriasJaCarregadas = false;
+
+        // ── Helpers ──────────────────────────────────────────────────
+        function abrir(overlay, modal) {
+            overlay.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
         }
 
-        function fecharStoryModal() {
-            storyOverlay.classList.add('opacity-0', 'pointer-events-none');
-            storyModal.classList.add('opacity-0', 'pointer-events-none');
+        function fechar(overlay, modal) {
+            overlay.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-0', 'pointer-events-none');
         }
 
-        async function carregarCategorias() {
-            storyCategories.innerHTML = `
-            <div class="border border-zinc-800 bg-black/20 px-4 py-4 text-sm text-zinc-400">
-                Carregando categorias...
-            </div>
-        `;
+        // ── Modal de edição ──────────────────────────────────────────
+        document.getElementById('openEditModal')
+            ?.addEventListener('click', () => abrir(modalOverlay, editModal));
 
-            try {
-                const response = await fetch("{{ route('historias.categorias') }}");
-                const categorias = await response.json();
+        document.getElementById('openEditModalAside')
+            ?.addEventListener('click', () => abrir(modalOverlay, editModal));
 
-                storyCategories.innerHTML = '';
+        document.getElementById('closeEditModal')
+            ?.addEventListener('click', () => fechar(modalOverlay, editModal));
 
-                categorias.forEach(categoria => {
-                    const card = document.createElement('a');
-                    card.href = categoria.tipo === 'fanfic'
-                        ? `/fanfics/criar/${categoria.slug}`
-                        : `/historias/criar/${categoria.slug}`;
-                    card.className = 'block border border-zinc-800 bg-black/20 p-4 transition hover:border-red-700 hover:bg-zinc-800';
+        modalOverlay?.addEventListener('click', () => fechar(modalOverlay, editModal));
 
-                    card.innerHTML = `
-                    <div class="text-xs font-extrabold uppercase tracking-[0.18em] ${categoria.tipo === 'fanfic' ? 'text-red-400' : 'text-zinc-500'}">
-                        ${categoria.tipo === 'fanfic' ? 'Fanfic' : 'História'}
-                    </div>
-                    <div class="mt-2 text-lg font-black text-white">${categoria.nome}</div>
-                    <div class="mt-2 text-sm leading-6 text-zinc-400">${categoria.descricao ?? ''}</div>
-                `;
+        // ── Modal de desativação ─────────────────────────────────────
+        document.getElementById('openDeactivateConfirm')
+            ?.addEventListener('click', () => abrir(deactivateOverlay, deactivateModal));
 
-                    storyCategories.appendChild(card);
-                });
-            } catch (error) {
+        document.getElementById('closeDeactivateModal')
+            ?.addEventListener('click', () => fechar(deactivateOverlay, deactivateModal));
+
+        deactivateOverlay?.addEventListener('click', () => fechar(deactivateOverlay, deactivateModal));
+
+        // ── Modal de nova história ───────────────────────────────────
+        document.getElementById('openStoryModal')
+            ?.addEventListener('click', async () => {
+                abrir(storyOverlay, storyModal);
+
+                if (categoriasJaCarregadas) return;
+
                 storyCategories.innerHTML = `
-                <div class="border border-red-900/60 bg-red-950/20 px-4 py-4 text-sm text-red-300">
-                    Erro ao carregar categorias.
+                <div class="border border-zinc-800 bg-black/20 px-4 py-4 text-sm text-zinc-400 sm:col-span-2 lg:col-span-3">
+                    Carregando categorias...
                 </div>
             `;
-            }
+
+                try {
+                    const response = await fetch("{{ route('historias.categorias') }}", {
+                        method: 'GET',
+                                    headers: {
+                        'Accept': 'application/json',
+              'X-Requested-With': 'XMLHttpRequest'
+                    }
+                });
+
+        if (!response.ok) {
+            throw new Error('Falha ao carregar categorias.');
         }
 
-        openStoryModal?.addEventListener('click', abrirStoryModal);
-        closeStoryModal?.addEventListener('click', fecharStoryModal);
-        storyOverlay?.addEventListener('click', fecharStoryModal);
+        const categorias = await response.json();
+
+        if (!Array.isArray(categorias) || categorias.length === 0) {
+            storyCategories.innerHTML = `
+                        <div class="border border-zinc-800 bg-black/20 px-4 py-4 text-sm text-zinc-400 sm:col-span-2 lg:col-span-3">
+                            Nenhuma categoria disponível no momento.
+                        </div>
+                    `;
+            return;
+        }
+
+        storyCategories.innerHTML = '';
+
+        categorias.forEach(categoria => {
+            const rota = categoria.tipo === 'fanfic'
+                ? "{{ url('/fanfics/criar') }}/" + categoria.slug
+                : "{{ url('/historias/criar') }}/" + categoria.slug;
+
+            const badgeTipo = categoria.tipo === 'fanfic'
+                ? '<span class="mt-3 inline-block bg-purple-700 px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white">Fanfic</span>'
+                : '<span class="mt-3 inline-block bg-red-700 px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white">História</span>';
+
+            const card = document.createElement('a');
+            card.href = rota;
+            card.className = 'block border border-zinc-800 bg-black/20 p-4 transition hover:border-red-700 hover:bg-zinc-800';
+
+            card.innerHTML = `
+                        <div class="text-sm font-black uppercase tracking-[0.12em] text-white">
+                            ${categoria.nome}
+                        </div>
+
+                        ${badgeTipo}
+
+                        <p class="mt-3 text-sm leading-6 text-zinc-400">
+                            ${categoria.descricao ? categoria.descricao : 'Sem descrição disponível.'}
+                        </p>
+                    `;
+
+            storyCategories.appendChild(card);
+        });
+
+        categoriasJaCarregadas = true;
+            } catch (error) {
+            storyCategories.innerHTML = `
+                    <div class="border border-red-900/60 bg-red-950/30 px-4 py-4 text-sm text-red-300 sm:col-span-2 lg:col-span-3">
+                        Não foi possível carregar as categorias.
+                    </div>
+                `;
+            console.error(error);
+        }
+        });
+
+        document.getElementById('closeStoryModal')
+            ?.addEventListener('click', () => fechar(storyOverlay, storyModal));
+
+        storyOverlay?.addEventListener('click', () => fechar(storyOverlay, storyModal));
+
+        // ── Modal de senha ───────────────────────────────────────────
+        document.getElementById('openPasswordModal')
+            ?.addEventListener('click', () => abrir(passwordOverlay, passwordModal));
+
+        document.getElementById('closePasswordModal')
+            ?.addEventListener('click', () => fechar(passwordOverlay, passwordModal));
+
+        passwordOverlay?.addEventListener('click', () => fechar(passwordOverlay, passwordModal));
+
+        // ── Reabre modal de edição se houver erros de validação ──────
+        @if ($errors->any())
+            abrir(modalOverlay, editModal);
+        @endif
     </script>
+
 </body>
 
 </html>

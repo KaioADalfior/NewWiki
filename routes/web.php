@@ -7,9 +7,10 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PerfilController;
 use App\Http\Controllers\FanficController;
 use App\Http\Controllers\HistoriaController;
+use App\Http\Controllers\HistoriaLeituraController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoriaController;
-use Illuminate\Support\Facades\Mail;
+use App\Http\Controllers\AcervoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -65,6 +66,14 @@ Route::get('/home', function () {
 Route::get('/perfil', [PerfilController::class, 'index'])->name('perfil');
 Route::post('/perfil/salvar', [PerfilController::class, 'salvar'])->name('perfil.salvar');
 Route::post('/perfil/desativar', [PerfilController::class, 'desativar'])->name('perfil.desativar');
+Route::post('/perfil/alterar-senha', [PerfilController::class, 'alterarSenha'])->name('perfil.alterarSenha');
+
+/*
+|--------------------------------------------------------------------------
+| Explorar / Acervo geral
+|--------------------------------------------------------------------------
+*/
+Route::get('/explorar', [AcervoController::class, 'index'])->name('explorar.index');
 
 /*
 |--------------------------------------------------------------------------
@@ -74,6 +83,9 @@ Route::post('/perfil/desativar', [PerfilController::class, 'desativar'])->name('
 Route::get('/nova-historia/categorias', [HistoriaController::class, 'categorias'])->name('historias.categorias');
 Route::get('/historias/criar/{slug}', [HistoriaController::class, 'criar'])->name('historias.criar');
 Route::post('/historias/salvar', [HistoriaController::class, 'salvar'])->name('historias.salvar');
+
+/* leitura pública da história */
+Route::get('/historias/{slug}', [HistoriaLeituraController::class, 'show'])->name('historias.show');
 
 /*
 |--------------------------------------------------------------------------
@@ -91,8 +103,9 @@ Route::get('/fanfics/{fanficId}/capitulos/{capituloId}/editar', [FanficControlle
 Route::post('/fanfics/{fanficId}/capitulos/{capituloId}/atualizar', [FanficController::class, 'capituloAtualizar'])->name('fanfics.capitulos.atualizar');
 Route::post('/fanfics/{fanficId}/capitulos/{capituloId}/publicar', [FanficController::class, 'capituloPublicar'])->name('fanfics.capitulos.publicar');
 
-Route::get('/fanfic/{slug}', [FanficController::class, 'visualizar'])->name('fanfics.visualizar');
-Route::get('/fanfic/{slug}/capitulo/{numero}', [FanficController::class, 'visualizarCapitulo'])->name('fanfics.capitulos.visualizar');
+/* visualização pública da fanfic */
+Route::get('/fanfics/{slug}', [FanficController::class, 'visualizar'])->name('fanfics.visualizar');
+Route::get('/fanfics/{slug}/capitulo/{numero}', [FanficController::class, 'visualizarCapitulo'])->name('fanfics.capitulos.visualizar');
 
 /*
 |--------------------------------------------------------------------------
@@ -101,6 +114,11 @@ Route::get('/fanfic/{slug}/capitulo/{numero}', [FanficController::class, 'visual
 */
 Route::get('/categorias/{slug}', [CategoriaController::class, 'show'])->name('categorias.show');
 
+/*
+|--------------------------------------------------------------------------
+| Extras
+|--------------------------------------------------------------------------
+*/
 Route::get('/desenvolvedor', function () {
     return view('desenvolvedor');
 })->name('desenvolvedor');

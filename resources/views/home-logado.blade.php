@@ -5,7 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>HorrorWiki | Início</title>
-    <meta name="description" content="HorrorWiki — portal sombrio de histórias de terror, fanfics, criaturas e fórum macabro.">
+    <meta name="description"
+        content="HorrorWiki — portal sombrio de histórias de terror, fanfics, criaturas e fórum macabro.">
 
     <link rel="icon" type="image/png" href="{{ asset('images/icon.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -141,8 +142,8 @@
                             <input type="text" placeholder="Pesquisar lendas, criaturas e histórias..."
                                 class="w-full bg-transparent text-sm text-zinc-200 placeholder:text-zinc-500 focus:outline-none">
                             <button class="ml-3 text-zinc-500 transition hover:text-red-400" aria-label="Pesquisar">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
                                     <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="2"
                                         d="M21 21l-4.35-4.35m1.35-5.15a7 7 0 11-14 0 7 7 0 0114 0z" />
                                 </svg>
@@ -160,8 +161,8 @@
                     <button id="openProfileSidebar" type="button"
                         class="group flex h-12 w-12 items-center justify-center rounded-md border-2 border-zinc-700 bg-zinc-900 text-zinc-400 transition hover:border-red-700 hover:bg-zinc-800 hover:text-white"
                         aria-label="Abrir perfil">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
-                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="1.8">
                             <path stroke-linecap="round" stroke-linejoin="round"
                                 d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" />
                         </svg>
@@ -230,11 +231,12 @@
                                     class="group overflow-hidden border border-red-950/60 bg-zinc-900/75 shadow-xl shadow-black/20 transition duration-300 hover:-translate-y-1 hover:border-red-700">
 
                                     <div class="relative h-44 overflow-hidden border-b border-zinc-800">
-                                        <img src="{{ $imagemCategoria }}"
-                                            alt="{{ $categoria->nome }}"
+                                        <img src="{{ $imagemCategoria }}" alt="{{ $categoria->nome }}"
                                             class="h-full w-full object-cover transition duration-500 group-hover:scale-105">
 
-                                        <div class="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent"></div>
+                                        <div
+                                            class="absolute inset-0 bg-gradient-to-t from-black via-black/45 to-transparent">
+                                        </div>
 
                                         <span
                                             class="absolute left-3 top-3 bg-red-700 px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.14em] text-white">
@@ -242,7 +244,8 @@
                                         </span>
 
                                         <div class="absolute inset-x-0 bottom-0 p-4">
-                                            <h3 class="text-lg font-black leading-6 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
+                                            <h3
+                                                class="text-lg font-black leading-6 text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]">
                                                 {{ $categoria->nome }}
                                             </h3>
                                         </div>
@@ -305,7 +308,7 @@
                         <span class="bg-red-700 px-4 py-2 text-sm font-black uppercase tracking-[0.14em] text-white">
                             Destaques
                         </span>
-                        <a href="#"
+                        <a href="{{ route('explorar.index') }}"
                             class="text-xs font-bold uppercase tracking-[0.14em] text-zinc-400 transition hover:text-red-400">
                             Ver tudo →
                         </a>

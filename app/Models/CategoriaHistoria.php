@@ -24,4 +24,9 @@ class CategoriaHistoria extends Model
     {
         return $this->hasMany(Historia::class, 'categoria_id');
     }
+
+    public function fanfics()
+    {
+        return $this->hasMany(Fanfic::class, 'categoria_id');
+    }
 }

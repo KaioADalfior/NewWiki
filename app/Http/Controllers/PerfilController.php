@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Hash;
 
 class PerfilController extends Controller
 {
@@ -74,6 +75,37 @@ class PerfilController extends Controller
         $perfil->save();
 
         return redirect()->back()->with('sucesso', 'Perfil atualizado com sucesso!');
+    }
+
+    public function alterarSenha(Request $request): RedirectResponse
+    {
+        $usuarioId = session('usuario_id');
+
+        if (!$usuarioId) {
+            return redirect()->route('login');
+        }
+
+        $request->validate([
+            'nova_senha' => 'required|string|min:6|confirmed',
+        ], [
+            'nova_senha.required' => 'Informe a nova senha.',
+            'nova_senha.min' => 'A nova senha deve ter no mínimo 6 caracteres.',
+            'nova_senha.confirmed' => 'A repetição da senha não confere.',
+        ]);
+
+        $usuario = Usuario::find($usuarioId);
+
+        if (!$usuario) {
+            session()->flush();
+            return redirect()->route('login');
+        }
+
+        $usuario->senha = Hash::make($request->nova_senha);
+        $usuario->save();
+
+        return redirect()
+            ->route('perfil')
+            ->with('sucesso', 'Senha alterada com sucesso!');
     }
 
     public function desativar(Request $request): RedirectResponse
